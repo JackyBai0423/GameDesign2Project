@@ -12,10 +12,15 @@ public class GridManager : MonoBehaviour
     // initialize a 2d array of tiles with size x and y
     public Tile[,] tiles;
 
-    private void Start()
+    private void Awake()
     {
         tiles = new Tile[width, height];
         GenerateGrids();
+    }
+
+    private void Start()
+    {
+        
     }
     void GenerateGrids() { 
         for(int x = 0; x < width; x++)
@@ -30,17 +35,17 @@ public class GridManager : MonoBehaviour
         }
         cam.transform.position = new Vector3(width/2f-0.5f, height/2f-0.5f, -10); 
     }
-    void GenerateItems(int numItems) {
+    public void GenerateItems(int numItems) {
         Unity.Mathematics.Random rnd = new Unity.Mathematics.Random((uint)System.DateTime.Now.Ticks);
-        // combine 2 pics
         for (int i = 0; i < numItems; i++)
         {
-            int x = rnd.NextInt(0, width);
-            int y = rnd.NextInt(0, height);
+            int x = rnd.NextInt(0, width-1);
+            int y = rnd.NextInt(0, height-1);
             if (tiles[x, y].isWalkable)
             {
                 tiles[x, y].isWalkable = false;
                 tiles[x, y].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Grapes");
+                Debug.Log($"Item {i} generated at {x} {y}");
             }
             else
             {

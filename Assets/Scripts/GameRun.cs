@@ -4,34 +4,47 @@ using UnityEngine;
 
 public class GameRun : MonoBehaviour
 {
-    public bool turn; // true = player, false = enemy
+    [SerializeField] private GridManager gridManager;
+    public enum GameState { PlayerTurn, EnemyTurn, GameOver };
+    public GameState turn; // true = player, false = enemy
     // Start is called before the first frame update
     void Start()
     {
-        turn = true; // player starts first
-
+        switchToPlayer(); // player starts first
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        OnGUI();
+
     }
 
     void OnGUI()
     {
-        if (turn)
+        if (turn == GameState.PlayerTurn)
         {
             GUI.Label(new Rect(10, 10, 100, 20), "Player Turn");
         }
-        else
+        else if (turn == GameState.EnemyTurn)
         {
             GUI.Label(new Rect(10, 10, 100, 20), "AI Turn");
         }
     }
-
-    void Round() { 
-            
+    // give player a turn
+    public void switchToPlayer() {
+        roundStart();
+        turn = GameState.PlayerTurn;
+    }
+    // give AI a turn
+    public void switchToAI()
+    {
+        turn = GameState.EnemyTurn;
+    }
+    // start of a round
+    public void roundStart() {
+        gridManager.GenerateItems(5);
+    }
+    public void endRound() { 
     }
 }
