@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e95873d4200df6848ae08b3e51fcc8f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turn: 0
+  gridManager: {fileID: 1416039357}
 --- !u!4 &136541696
 Transform:
   m_ObjectHideFlags: 0
@@ -285,6 +285,7 @@ MonoBehaviour:
   height: 9
   tilePrefab: {fileID: 3290252222789736585, guid: 3d08505fd92f0ed42bdb09fcc8c28302, type: 3}
   cam: {fileID: 1268278316}
+  item: {fileID: 1973010805026932098, guid: 947342c687807464fb1af2bc79c3be4d, type: 3}
 --- !u!4 &1416039358
 Transform:
   m_ObjectHideFlags: 0
