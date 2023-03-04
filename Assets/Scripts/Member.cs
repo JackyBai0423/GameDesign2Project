@@ -1,18 +1,19 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Member: MonoBehaviour
+public class Member : MonoBehaviour
 {
     public bool isPlaced { get; set; }
     public enum Type { Andrew, Sonic, Fizz };
     public Type type { get; set; }
     public int coordX { get; set; }
-    public int coordy{ get; set; }
+    public int coordy { get; set; }
     private int moveLeft { get; set; }
 
-    public void Init(int x, int y, Type type) {
+    [SerializeField] private GameObject highlight;
+
+    public void Init(int x, int y, Type type)
+    {
         this.isPlaced = false;
         this.type = type;
         this.coordX = -1;
@@ -33,10 +34,12 @@ public class Member: MonoBehaviour
         if (this.type == Type.Andrew)
         {
             renderer.sprite = Resources.Load<Sprite>("ANDREW");
-        } else if (this.type == Type.Sonic)
+        }
+        else if (this.type == Type.Sonic)
         {
             renderer.sprite = Resources.Load<Sprite>("Sonic");
-        } else if (this.type == Type.Fizz)
+        }
+        else if (this.type == Type.Fizz)
         {
             renderer.sprite = Resources.Load<Sprite>("Fizz");
         }
@@ -44,7 +47,8 @@ public class Member: MonoBehaviour
     }
 
     // make a move and return whether the move is performed
-    public bool Move(int destX, int destY) {
+    public bool Move(int destX, int destY)
+    {
         // if not placed yet, place it
         if (!this.isPlaced)
         {
@@ -56,10 +60,21 @@ public class Member: MonoBehaviour
         {
             return false;
         }
-        else {
+        else
+        {
             // TO-DO: move it
             moveLeft = 0;
             return true;
         }
+    }
+
+    private void OnMouseEnter()
+    {
+        highlight.SetActive(true);
+    }
+
+    private void OnMouseExit()
+    {
+        highlight.SetActive(false);
     }
 }

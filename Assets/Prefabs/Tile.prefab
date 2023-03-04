@@ -100,9 +100,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isWalkable: 0
+  hasItem: 0
   coordX: 0
   coordy: 0
   highlight: {fileID: 6837129100484804867}
+  gameRun: {fileID: 3824767426048597631, guid: 59deb017f27c72f45ab1ae9719a5ad37, type: 3}
 --- !u!61 &874280610127263194
 BoxCollider2D:
   m_ObjectHideFlags: 0

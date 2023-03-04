@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Tile : MonoBehaviour
 {
@@ -16,7 +12,7 @@ public class Tile : MonoBehaviour
         hasItem = false;
         coordX = x;
         coordy = y;
-        if(mapGenWalkGrid(x,y))
+        if (mapGenWalkGrid(x, y))
         {
             isWalkable = false;
         }
@@ -36,7 +32,8 @@ public class Tile : MonoBehaviour
             spriteRenderer.sprite = Resources.Load<Sprite>("AisleFreezer");
         }
     }
-    private bool mapGenWalkGrid(int x, int y) {
+    private bool mapGenWalkGrid(int x, int y)
+    {
         return x >= 1 && x < 15 && x % 2 != 0 && y >= 1 && y <= 7 && y != 4;
     }
 
@@ -48,5 +45,11 @@ public class Tile : MonoBehaviour
     private void OnMouseExit()
     {
         highlight.SetActive(false);
+    }
+    
+    private void OnMouseDown()
+    {
+        GameRun gameRun = FindObjectOfType<GameRun>();
+        bool result = gameRun.generateMember(coordX, coordy);
     }
 }

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -52,7 +51,8 @@ public class GameRun : MonoBehaviour
         }
     }
     // give player a turn
-    public void switchToPlayer() {
+    public void switchToPlayer()
+    {
         roundStart();
         isPlayerTurn = true;
     }
@@ -74,28 +74,7 @@ public class GameRun : MonoBehaviour
 
     public void turnStart()
     {
-        //List<Member> currentHand = (isPlayerTurn) ? playerHand : enemyHand;
-        //// place all the members on tile
-        //for(int i = 0; i < currentHand.Count; i++)
-        //{
-        //    StartCoroutine(WaitForMouseClick());
-        //    Vector3 mousePosition = Input.mousePosition;
-        //    Camera camera = Camera.main;
-        //    Vector3 mousePositionWorld = camera.ScreenToWorldPoint(mousePosition);
-        //    int x = (int)Mathf.Floor(mousePositionWorld.x);
-        //    int y = (int)Mathf.Floor(mousePositionWorld.y);
-        //    if(((x == 0 && isPlayerTurn) || (x == 14 && !isPlayerTurn)) && gridManager.GetTile(new Vector2(x,y)).isWalkable && !gridManager.GetTile(new Vector2(x, y)).hasItem)
-        //    {
-        //        Member placed_member = currentHand[0];
-        //        currentHand.RemoveAt(0);
-        //        placed_member.Init(x, y);
-        //    }
-        //    else
-        //    {
-        //        i--;
-        //    }
-            
-        //}
+
     }
 
     public void turnEnd()
@@ -103,24 +82,26 @@ public class GameRun : MonoBehaviour
 
     }
 
-    private void OnMouseDown()
+    public bool generateMember(int x, int y)
     {
         List<Member.Type> currentHand = (isPlayerTurn) ? playerHand : enemyHand;
-        if(currentHand.Count == 0)
+        if (currentHand.Count == 0)
         {
-            return;
+            Debug.Log("No more members in hand");
+            return false;
         }
-        Vector3 mousePosition = Input.mousePosition;
-        Camera camera = Camera.main;
-        Vector3 mousePositionWorld = camera.ScreenToWorldPoint(mousePosition);
-        int x = (int)Mathf.Floor(mousePositionWorld.x);
-        int y = (int)Mathf.Floor(mousePositionWorld.y);
-        Debug.Log($"Mouse down at: {x} {y}");
         if (((x == 0 && isPlayerTurn) || (x == 14 && !isPlayerTurn)) && gridManager.GetTile(new Vector2(x, y)).isWalkable && !gridManager.GetTile(new Vector2(x, y)).hasItem)
         {
-            Member placed_member = Instantiate(member,new Vector3(x,y),Quaternion.identity);
+            Member placed_member = Instantiate(member, new Vector3(x, y), Quaternion.identity);
             placed_member.Init(x, y, currentHand[0]);
             currentHand.RemoveAt(0);
+            gridManager.GetTile(new Vector2(x, y)).isWalkable = false;
+            return true;
+        }
+        else
+        {
+            Debug.Log("Tile not avaliable");
+            return false;
         }
     }
 }
