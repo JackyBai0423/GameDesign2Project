@@ -20,3 +20,6 @@ Several designs of the items to pick;
 More art designs coming! See our new designs of Fizz and Blitz! And a change of the design of the floor.
 A more Playable game...
 Some Sound effects on the way...
+
+
+>>>Check out our designning document by this link: https://docs.google.com/document/d/1OgiYqTxq_ueo4ClFukvOIAxFpUlQ8lW8X78nVIEx_j0/edit?usp=sharing
