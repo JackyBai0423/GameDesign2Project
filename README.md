@@ -16,10 +16,25 @@ The basic design of three different kinds of characters the player could move;
 Several designs of the items to pick;
 >>>Do you like grapes? What's your favorite fruit?
 
+# Update on the second version (03222023)
+
+//Gameplay//
+
+The movement of the character has been changed. The player now can control the character in a more smooth way!
+Now player can pick up the items by using SPACE.
+The mode of game changing....
+>>> check out the score system we have right now! Try to play as high as you could!
+
+//Art//
+
+Take a look at our new images of Fizz and Blitz!
+More items images on their ways...
+
 //Upcoming//
-More art designs coming! See our new designs of Fizz and Blitz! And a change of the design of the floor.
-A more Playable game...
-Some Sound effects on the way...
+
+Sound effects and background music!
+Possible UI update.
+
 
 
 >>>Check out our designning document by this link: https://docs.google.com/document/d/1OgiYqTxq_ueo4ClFukvOIAxFpUlQ8lW8X78nVIEx_j0/edit?usp=sharing
