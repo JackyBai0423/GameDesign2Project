@@ -11,7 +11,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Isles
   - 
   - 
   - 
@@ -40,4 +40,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 1382531973
+    locked: 0
+  - name: Foreground
+    uniqueID: 1717783245
+    locked: 0
+  - name: Player
+    uniqueID: 1134022701
     locked: 0

@@ -16,7 +16,7 @@ public class GameRun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        OnGUI();
+        // OnGUI();
     }
 
     void OnGUI()
