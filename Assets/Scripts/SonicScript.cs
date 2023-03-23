@@ -7,6 +7,7 @@ public class SonicScript : MonoBehaviour
 {
     public float moveSpeed;
     public LayerMask Isles;
+    public LayerMask blocker;
     public bool isMoving;
     private Vector2 input;
     public static int turnCounterP1;
@@ -103,6 +104,10 @@ public class SonicScript : MonoBehaviour
             walkable = false;
             return walkable;
         }
+        if (Physics2D.OverlapCircle(targetPos, 1f, blocker) != null) {
+            walkable = false;
+            return walkable;
+        }        
         if (targetPos.x > 10 || targetPos.x < -10 || targetPos.y > 4 || targetPos.y < -4){
             walkable = false;
             return walkable;
