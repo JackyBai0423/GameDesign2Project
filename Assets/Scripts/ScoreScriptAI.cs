@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class ScoreScript : MonoBehaviour
+public class ScoreScriptAI : MonoBehaviour
 {
     public static int scoreVal = 0;
     public TextMeshProUGUI score;
@@ -20,7 +20,7 @@ public class ScoreScript : MonoBehaviour
     {
         score.text = "Score: " + scoreVal;
 
-        if (Input.GetKeyDown(KeyCode.Space) && SonicScript.turnP1 == true && SonicScriptP2.turnP2 == false){
+        if (Input.GetKeyDown(KeyCode.Space) && SonicScriptP2.turnP2 == true && SonicScript.turnP1 == false){
              scoreVal += 100;
         }
 
