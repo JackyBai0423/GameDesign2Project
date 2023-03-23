@@ -60,9 +60,9 @@ public class SonicScript : MonoBehaviour
             if(CheckForEncounters(targetPos) && Input.GetKeyDown(KeyCode.Space)) {
                     ScoreScript.scoreVal += 100;
                 }
-                Debug.Log("turnP1 in p1 "+ turnP1);
+                // Debug.Log("turnP1 in p1 "+ turnP1);
                 // Debug.Log("turnP2 in p1 "+SonicScriptP2.turnP2);
-                Debug.Log("turn p1 counter " + turnCounterP1);
+                // Debug.Log("turn p1 counter " + turnCounterP1);
             }
         }
     }
@@ -104,7 +104,7 @@ public class SonicScript : MonoBehaviour
             walkable = false;
             return walkable;
         }
-        if (Physics2D.OverlapCircle(targetPos, 1f, blocker) != null) {
+        if (Physics2D.OverlapCircle(targetPos, 0.5f, blocker) != null) {
             walkable = false;
             return walkable;
         }        

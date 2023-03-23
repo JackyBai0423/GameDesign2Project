@@ -27,13 +27,18 @@ public class BlockerScript : MonoBehaviour
             counterP1 += 1;
         }
 
-         if(Input.GetMouseButtonDown(0) && SonicScriptP2.turnP2 && counterP2 < 4){
+         if(Input.GetMouseButtonDown(0) && SonicScriptP2.turnP2 && counterP2 < 8){
             rend.enabled = toRend;
+            Debug.Log("Blocker 2 can be placed");
             Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector3 offset = new Vector3(0,0,1);
             Instantiate(andrew, pos + offset, Quaternion.identity);
             counterP2 += 1;
         }
+
+        Debug.Log("counterP1 is " + counterP1);
+
+        Debug.Log("counterP2 is " + counterP2);
 
         // if (Physics2D.OverlapCircle(transform.position, 1f, Isles) != null) {
         //     SonicScript.walkable = false;
