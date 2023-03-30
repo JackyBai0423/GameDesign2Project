@@ -9,7 +9,7 @@ public class ScoreScriptAI : MonoBehaviour
     public static int scoreVal = 0;
     public TextMeshProUGUI score;
     public bool gameOver;
-    public int consecutive = 0;
+    public static int consecutive = 0;
     public GameOverScript GameOverScreen;
 
     public void GameOver(){

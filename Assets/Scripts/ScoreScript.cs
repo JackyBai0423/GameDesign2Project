@@ -8,7 +8,7 @@ public class ScoreScript : MonoBehaviour
 {
     public static int scoreVal = 0;
     public TextMeshProUGUI score;
-    public int consecutive = 0;
+    public static int consecutive = 0;
     public bool gameOver;
     public GameOverScript GameOverScreen;
 

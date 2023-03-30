@@ -19,13 +19,17 @@ public class TurnManager : MonoBehaviour
         if (SonicScript.turnP1){
             turn.text = "Player 1's turn";
             if (SonicScript.turnCounterP1 == 3){
-                turn.text = "Player 2's turn";    
+                turn.text = "Player 2's turn"; 
+                // SonicScript.turnP1 = false;
+                // SonicScriptP2.turnP2 = true;   
             }
         }
         if (SonicScriptP2.turnP2){
             turn.text = "Player 2's turn";
             if (SonicScriptP2.turnCounterP2 == 3){
+                // SonicScriptP2.turnP2 = false; 
                 turn.text = "Player 1's turn";
+                // SonicScript.turnP1 = true;
             }
         }
 
