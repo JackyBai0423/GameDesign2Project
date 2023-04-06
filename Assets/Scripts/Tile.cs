@@ -1,19 +1,18 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Tile : MonoBehaviour
 {
-    [SerializeField] private Image backgroundImage;
-    [SerializeField] private Image foregroundImage;
-    public bool isWalkable;
+    public bool isWalkable, hasItem;
     private GridManager gridManager;
+    public int coordX, coordy;
+    [SerializeField] GameObject highlight;
 
     public void Init(int x, int y)
     {
-        if(x >= 1 && x <15 && x%2 != 0 && y >= 1 && y <= 7)
+        hasItem = false;
+        coordX = x;
+        coordy = y;
+        if (mapGenWalkGrid(x, y))
         {
             isWalkable = false;
         }
@@ -32,5 +31,25 @@ public class Tile : MonoBehaviour
         {
             spriteRenderer.sprite = Resources.Load<Sprite>("AisleFreezer");
         }
+    }
+    private bool mapGenWalkGrid(int x, int y)
+    {
+        return x >= 1 && x < 15 && x % 2 != 0 && y >= 1 && y <= 7 && y != 4;
+    }
+
+    private void OnMouseEnter()
+    {
+        highlight.SetActive(true);
+    }
+
+    private void OnMouseExit()
+    {
+        highlight.SetActive(false);
+    }
+    
+    private void OnMouseDown()
+    {
+        GameRun gameRun = FindObjectOfType<GameRun>();
+        bool result = gameRun.generateMember(coordX, coordy);
     }
 }
