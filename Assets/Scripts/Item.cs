@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +15,11 @@ public class Item : MonoBehaviour
     void Update()
     {
         
+    }
+
+    // return the current position of the item
+    public Vector2 GetPosition()
+    {
+        return transform.position;
     }
 }
