@@ -27,7 +27,7 @@ public class ScoreScript : MonoBehaviour
     {
         score.text = "Score: " + scoreVal;
 
-        if (Input.GetKeyDown(KeyCode.Space) && SonicScript.turnP1 && !SonicScriptP2.turnP2 && consecutive < 3){
+        if (Input.GetKeyDown(KeyCode.Space) && SonicScript.turnP1 && !SonicScriptP2.turnP2 && consecutive < 3 && SonicScript.updateScore){
             AddScore();
         }
 

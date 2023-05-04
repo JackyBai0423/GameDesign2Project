@@ -14,6 +14,7 @@ public class ScoreScriptAI : MonoBehaviour
 
     public void GameOver(){
         GameOverScreen.Setup(scoreVal);
+        
     }
     // Start is called before the first frame update
     void Start()
@@ -28,7 +29,7 @@ public class ScoreScriptAI : MonoBehaviour
         score.text = "Score: " + scoreVal;
 
         if (Input.GetKeyDown(KeyCode.Space) && SonicScriptP2.turnP2 && !SonicScript.turnP1 && consecutive < 3){
-            AddScore();
+            // AddScore();
         }
 
         if (Input.GetKeyDown(KeyCode.Escape)){

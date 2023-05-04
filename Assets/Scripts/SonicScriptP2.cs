@@ -30,7 +30,7 @@ public class SonicScriptP2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isMoving)
+        if (!isMoving && GameOverScript.isPlayable)
         {
             input.x = Input.GetAxisRaw("Horizontal");
             input.y = Input.GetAxisRaw("Vertical");
@@ -55,19 +55,10 @@ public class SonicScriptP2 : MonoBehaviour
             if (isWalkable(targetPos) && turnP2 == true){
                 StartCoroutine(Move(targetPos));
                 }
-            if(CheckForEncounters(targetPos) && Input.GetKeyDown(KeyCode.Space)) {
+            if(PickupItem(targetPos) && Input.GetKeyDown(KeyCode.Space)) {
                     ScoreScript.scoreVal += 100;
                 }
 
-                // Debug.Log("turnP2 in p2 " + turnP2);
-                // Debug.Log("turnP1 in p2 "+SonicScript.turnP1);
-                // Debug.Log("turn p2 counter " + turnCounterP2);
-
-            // if (turnP2 == true){
-            //     // yield return new WaitForSeconds(3);
-            //     turnP1 = true;
-            //     turnCounterP1 = 0;
-            //     }
             }
         }
     }
@@ -83,37 +74,22 @@ public class SonicScriptP2 : MonoBehaviour
         }
         transform.position = targetPos;
 
-        // if (turnP2 == true){
-        //     // yield return new WaitForSeconds(3);
-        //     // turnP2 = false;
-        //     // turnP1 = true;
-        //     turnCounterP2 += 1;
-
-        //     if (turnCounterP2 >= 3){
-        //         turnP2 = false;
-        //         turnP1 = true;
-        //         turnCounterP1 = 0;
-        //         }
-        //     }
-
         turnCounterP2 += 1;
 
         isMoving = false;
-
-        // CheckForEncounters();
     }
 
     private bool isWalkable(Vector3 targetPos){
 
-        if (Physics2D.OverlapCircle(targetPos, 0.3f, Isles) != null) {
+        if (Physics2D.OverlapCircle(targetPos, 0.2f, Isles) != null) {
             walkable = false;
             return walkable;
         }
-        if (Physics2D.OverlapCircle(targetPos, 0.5f, blocker) != null) {
+        if (Physics2D.OverlapCircle(targetPos, 0.2f, blocker) != null) {
             walkable = false;
             return walkable;
         }
-        if (targetPos.x > 10 || targetPos.x < -10 || targetPos.y > 4 || targetPos.y < -4){
+        if (targetPos.x > 6.5 || targetPos.x < -6.5 || targetPos.y > 4.5 || targetPos.y < -5.5){
             walkable = false;
             return walkable;
         }
@@ -122,9 +98,25 @@ public class SonicScriptP2 : MonoBehaviour
         return walkable;
     }
 
-    public bool CheckForEncounters(Vector3 targetPos)
+    // private void OnTriggerEnter2D(Collider2D other) {
+        
+    //     if (other.CompareTag("Grape")){
+    //         Debug.Log("colliding");
+    //     }
+
+    //     if (other.CompareTag("Apple")){
+    //         Debug.Log("colliding");
+    //     }
+
+    //     if (other.CompareTag("Pizza")){
+    //         Debug.Log("colliding");
+    //     }
+
+    // }
+
+    public bool PickupItem(Vector3 targetPos)
     {
-        if (Physics2D.OverlapCircle(targetPos, 0.5f, Isles) != null)
+        if (Physics2D.OverlapCircle(targetPos, 0.1f, Isles) != null)
         {
             return false;
         }

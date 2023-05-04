@@ -8,6 +8,7 @@ public class SonicScript : MonoBehaviour
     public float moveSpeed;
     public LayerMask Isles;
     public LayerMask blocker;
+    public LayerMask Items;
     public bool isMoving;
     private Vector2 input;
     public static int turnCounterP1;
@@ -15,6 +16,8 @@ public class SonicScript : MonoBehaviour
     public static bool turnP1;
     // public static bool turnP2;
     public static bool walkable;
+    public static bool updateScore;
+    public static Vector2 targetPos;
 
     // Start is called before the first frame update
     void Start()
@@ -25,12 +28,13 @@ public class SonicScript : MonoBehaviour
         // turnCounterP2 = 0;
         // turnP2 = false;
         gameObject.name = "Sonic";
+        updateScore = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!isMoving)
+        if (!isMoving && GameOverScript.isPlayable)
         {
             input.x = Input.GetAxisRaw("Horizontal");
             input.y = Input.GetAxisRaw("Vertical");
@@ -41,7 +45,7 @@ public class SonicScript : MonoBehaviour
 
             if(input != Vector2.zero)
             {
-                var targetPos = transform.position;
+                targetPos = transform.position;
                 targetPos.x += input.x;
                 targetPos.y += input.y;
 
@@ -58,6 +62,8 @@ public class SonicScript : MonoBehaviour
                 StartCoroutine(Move(targetPos));
                 }
             if(CheckForEncounters(targetPos) && Input.GetKeyDown(KeyCode.Space)) {
+                    // Debug.Log("both conditions satisfied");
+                    updateScore = true;
                     ScoreScript.scoreVal += 100;
                 }
                 // Debug.Log("turnP1 in p1 "+ turnP1);
@@ -65,6 +71,7 @@ public class SonicScript : MonoBehaviour
                 // Debug.Log("turn p1 counter " + turnCounterP1);
             }
         }
+        // Debug.Log("no");
     }
 
     IEnumerator Move(Vector3 targetPos)
@@ -78,37 +85,23 @@ public class SonicScript : MonoBehaviour
         }
         transform.position = targetPos;
 
-        // if (turnP2 == true){
-        //     // yield return new WaitForSeconds(3);
-        //     // turnP2 = false;
-        //     // turnP1 = true;
-        //     turnCounterP2 += 1;
-
-        //     if (turnCounterP2 >= 3){
-        //         turnP2 = false;
-        //         turnP1 = true;
-        //         turnCounterP1 = 0;
-        //         }
-        //     }
-
         turnCounterP1 += 1;
 
         isMoving = false;
 
-        // CheckForEncounters();
     }
 
     private bool isWalkable(Vector3 targetPos){
 
-        if (Physics2D.OverlapCircle(targetPos, 0.3f, Isles) != null) {
+        if (Physics2D.OverlapCircle(targetPos, 0.2f, Isles) != null) {
             walkable = false;
             return walkable;
         }
-        if (Physics2D.OverlapCircle(targetPos, 0.5f, blocker) != null) {
+        if (Physics2D.OverlapCircle(targetPos, 0.2f, blocker) != null) {
             walkable = false;
             return walkable;
         }        
-        if (targetPos.x > 10 || targetPos.x < -10 || targetPos.y > 4 || targetPos.y < -4){
+        if (targetPos.x > 6.5 || targetPos.x < -6.5 || targetPos.y > 4.5 || targetPos.y < -5.5){
             walkable = false;
             return walkable;
         }
@@ -117,10 +110,29 @@ public class SonicScript : MonoBehaviour
         return walkable;
     }
 
+    // private void OnTriggerEnter2D(Collider2D other) {
+        
+    //     if (other.CompareTag("Grape")){
+    //         Debug.Log("colliding");
+    //     }
+
+    //     if (other.CompareTag("Apple")){
+    //         Debug.Log("colliding");
+    //     }
+
+    //     if (other.CompareTag("Pizza")){
+    //         Debug.Log("colliding");
+    //     }
+
+    // }
+
+
     public bool CheckForEncounters(Vector3 targetPos)
     {
-        if (Physics2D.OverlapCircle(targetPos, 0.5f, Isles) != null)
+        // Debug.Log("targestPos is" + targetPos);
+        if (Physics2D.OverlapCircle(targetPos, 0.1f, Items) == null)
         {
+            // Debug.Log("overlap!");
             return false;
         }
         return true;

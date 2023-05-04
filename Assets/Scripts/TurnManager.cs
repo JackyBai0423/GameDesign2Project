@@ -7,6 +7,8 @@ using TMPro;
 public class TurnManager : MonoBehaviour
 {
     public TextMeshProUGUI turn;
+
+    public static int turnCounter = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,13 +21,15 @@ public class TurnManager : MonoBehaviour
         if (SonicScript.turnP1){
             turn.text = "Player 1's turn";
             if (SonicScript.turnCounterP1 == 3){
-                turn.text = "Player 2's turn";    
+                turn.text = "Player 2's turn"; 
+                turnCounter++;   
             }
         }
         if (SonicScriptP2.turnP2){
             turn.text = "Player 2's turn";
             if (SonicScriptP2.turnCounterP2 == 3){
                 turn.text = "Player 1's turn";
+                turnCounter++;
             }
         }
 

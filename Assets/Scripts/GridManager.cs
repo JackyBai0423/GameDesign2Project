@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+// using UnityEngine.Random;
+
+using Random=UnityEngine.Random;
 
 public class GridManager : MonoBehaviour
 {
@@ -31,16 +34,24 @@ public class GridManager : MonoBehaviour
         cam.transform.position = new Vector3(width/2f-0.5f, height/2f-0.5f, -10); 
     }
     void GenerateItems(int numItems) {
-        Unity.Mathematics.Random rnd = new Unity.Mathematics.Random((uint)System.DateTime.Now.Ticks);
+        // Unity.Mathematics.Random rnd = new Unity.Mathematics.Random((uint)System.DateTime.Now.Ticks);
         // combine 2 pics
         for (int i = 0; i < numItems; i++)
         {
-            int x = rnd.NextInt(0, width);
-            int y = rnd.NextInt(0, height);
+            // int x = rnd.NextInt(0, width);
+            int x = Random.Range(0, width);
+            int y  = Random.Range(0, width);
+            Debug.Log(x);
+            Debug.Log(y);
+            // int y = rnd.NextInt(0, height);
             if (tiles[x, y].isWalkable)
             {
-                tiles[x, y].isWalkable = false;
-                tiles[x, y].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Grapes");
+                // tiles[x, y].isWalkable = false;
+                // tiles[x, y].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Grapes");
+                // tiles[x, y].GetComponent<SpriteRenderer>().sortingLayerName = "Items";
+                // tiles[x, y].GetComponent<SpriteRenderer>().sortingLayer = "Foreground";
+
+
             }
             else
             {
