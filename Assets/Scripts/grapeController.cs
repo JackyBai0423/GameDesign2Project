@@ -11,12 +11,12 @@ public class grapeController : MonoBehaviour
         
         if (other.tag == "Player"){
             Destroy(gameObject);
-            Debug.Log("should destroy");
+            // Debug.Log("should destroy");
             ScoreScript.scoreVal += 200;
         }
         if (other.tag == "Player2"){
             Destroy(gameObject);
-            Debug.Log("should destroy");
+            // Debug.Log("should destroy");
             ScoreScriptAI.scoreVal += 200;
         }
     }
@@ -27,7 +27,7 @@ public class grapeController : MonoBehaviour
     // if (collision.tag == "Player"){
     void update()
     {
-        Debug.Log("entered update");
+        // Debug.Log("entered update");
         // if (Physics2D.OverlapCircle(SonicScript.targetPos, 0.1f, Items) != null)
         // {
         //     Destroy(gameObject);

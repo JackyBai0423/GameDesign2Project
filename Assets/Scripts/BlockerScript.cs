@@ -38,7 +38,7 @@ public class BlockerScript : MonoBehaviour
         }
 
 
-        Debug.Log(TurnManager.turnCounter%4);
+        Debug.Log(TurnManager.turnCounter % 4);
         if ((TurnManager.turnCounter % 4) == 0){
 
         // if (((SonicScript.turnCounterP1 + SonicScriptP2.turnCounterP2) / 16) == ) {

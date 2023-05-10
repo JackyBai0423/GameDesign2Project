@@ -41,8 +41,8 @@ public class GridManager : MonoBehaviour
             // int x = rnd.NextInt(0, width);
             int x = Random.Range(0, width);
             int y  = Random.Range(0, width);
-            Debug.Log(x);
-            Debug.Log(y);
+            // Debug.Log(x);
+            // Debug.Log(y);
             // int y = rnd.NextInt(0, height);
             if (tiles[x, y].isWalkable)
             {
