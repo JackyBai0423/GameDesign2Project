@@ -101,7 +101,7 @@ public class SonicScript : MonoBehaviour
             walkable = false;
             return walkable;
         }        
-        if (targetPos.x > 6.5 || targetPos.x < -6.5 || targetPos.y > 4.5 || targetPos.y < -5.5){
+        if (targetPos.x > 7.5 || targetPos.x < -7.5 || targetPos.y > 4.5 || targetPos.y < -5.5){
             walkable = false;
             return walkable;
         }

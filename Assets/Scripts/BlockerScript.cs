@@ -17,31 +17,40 @@ public class BlockerScript : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {   
-        if(Input.GetMouseButtonDown(0) && SonicScript.turnP1 && counterP1 < 4){
+    {
+        if (Input.GetMouseButtonDown(0) && SonicScript.turnP1 && counterP1 < 4)
+        {
             rend.enabled = toRend;
-            Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector3 offset = new Vector3(0,0,1);
-            Instantiate(andrew, pos + offset, Quaternion.identity);
+            if (Input.mousePosition.x > 7.5 || Input.mousePosition.x < -7.5 || Input.mousePosition.y > 4.5 || Input.mousePosition.y < -5.5)
+            {
+                Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Vector3 offset = new Vector3(0, 0, 1);
+                Instantiate(andrew, pos + offset, Quaternion.identity);
+            }
             counterP1 += 1;
             Debug.Log("Blocker 1 can be placed");
 
         }
 
-         if(Input.GetMouseButtonDown(0) && SonicScriptP2.turnP2 && counterP2 < 8){
+        if (Input.GetMouseButtonDown(0) && SonicScriptP2.turnP2 && counterP2 < 8)
+        {
             rend.enabled = toRend;
             Debug.Log("Blocker 2 can be placed");
-            Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector3 offset = new Vector3(0,0,1);
-            Instantiate(andrew, pos + offset, Quaternion.identity);
+            if (Input.mousePosition.x > 7.5 || Input.mousePosition.x < -7.5 || Input.mousePosition.y > 4.5 || Input.mousePosition.y < -5.5)
+            {
+                Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Vector3 offset = new Vector3(0, 0, 1);
+                Instantiate(andrew, pos + offset, Quaternion.identity);
+            }
             counterP2 += 1;
         }
 
 
         Debug.Log(TurnManager.turnCounter % 4);
-        if ((TurnManager.turnCounter % 4) == 0){
+        if ((TurnManager.turnCounter % 4) == 0)
+        {
 
-        // if (((SonicScript.turnCounterP1 + SonicScriptP2.turnCounterP2) / 16) == ) {
+            // if (((SonicScript.turnCounterP1 + SonicScriptP2.turnCounterP2) / 16) == ) {
             DestroyObj();
         }
 
@@ -54,7 +63,8 @@ public class BlockerScript : MonoBehaviour
         // }
     }
 
-    void DestroyObj(){
+    void DestroyObj()
+    {
         Destroy(gameObject);
     }
 }
